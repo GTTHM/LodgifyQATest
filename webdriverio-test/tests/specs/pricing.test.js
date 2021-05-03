@@ -17,11 +17,12 @@ describe('Lodgify pricing page', () => {
 
     planPricingTestData.forEach((testData) => {
         it(`should have correct plans pricing for ${testData.rentalDisplays} rentals displays and ${testData.period} period `, () => {
-            pricing.setPricePeriod(testData.period);
+            pricing.selectCurrency(testData.currency)
+            pricing.setPricePeriod(testData.period)
             pricing.setNumberOfRentals(testData.rentalDisplays)
             plans.forEach((plan) => {
                 const price = pricing.getPricingForPlan(plan)
-                expect(price).toBe(testData[`${plan}Price`]);
+                expect(price).toBe(testData[`${plan}Price`])
             })
         })
     })
@@ -30,9 +31,8 @@ describe('Lodgify pricing page', () => {
         it(`should have correct plans currency for ${testData.currency}`, () => {
             pricing.selectCurrency(testData.currency)
             plans.forEach((plan) => {
-                const currency = pricing.getPlanCurrency(plan)
-                expect(currency.value).toBe(testData.sign);
-                expect(currency.pre).toBe(testData.pre);
+                const currency = pricing.getPlanCurrency(plan, testData.isPre)
+                expect(currency).toBe(testData.sign)
             })
         })
     })
@@ -40,22 +40,22 @@ describe('Lodgify pricing page', () => {
     sliderPositioningTestData.forEach((testData) => {
         it(`should position slider correctly for ${testData.rentalDisplays} rentals displays`, () => {
             pricing.setNumberOfRentals(testData.rentalDisplays)
-            sliderLocation = pricing.getSliderLocation()
-            tickLabelSizeAndLocation = pricing.getTickLabelSizeAndLocationForRentals(testData.rentalDisplays)
-            expect(sliderLocation.x).toBeGreaterThanOrEqual(tickLabelSizeAndLocation.x);
-            expect(sliderLocation.x).toBeLessThanOrEqual(tickLabelSizeAndLocation.x + tickLabelSizeAndLocation.width);
+            const sliderLocation = pricing.getSliderLocation()
+            const tickLabelSizeAndLocation = pricing.getTickLabelSizeAndLocationForRentals(testData.rentalDisplays)
+            expect(sliderLocation.x).toBeGreaterThanOrEqual(tickLabelSizeAndLocation.x)
+            expect(sliderLocation.x).toBeLessThanOrEqual(tickLabelSizeAndLocation.x + tickLabelSizeAndLocation.width)
         })
     })
 
     pricePeriodsTestData.forEach((testData) => {
         it(`should display ${testData.period} price period as active`, () => {
             pricing.setPricePeriod(testData.period)
-            expect(pricing.getActivePricePeriodText()).toBe(testData.text);
+            expect(pricing.getActivePricePeriodText()).toBe(testData.text)
         })
     })
 
     it('should not set more than 100 number of rentals', () => {
         pricing.setNumberOfRentals('200')
-        expect(pricing.getNumberOfRentals()).toBe('100');
+        expect(pricing.getNumberOfRentals()).toBe('100')
     })
 })

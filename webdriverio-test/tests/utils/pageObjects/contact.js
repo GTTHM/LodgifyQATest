@@ -1,29 +1,25 @@
-const { getRandomNumberBetween } = require("../helpers/commonHelper")
-
-const locators = {
-    form: {
-        name: '[name="name"]',
-        phone: '[name="phone"]',
-        email: '[name="email"]',
-        comment: '[placeholder="Comment"]',
-        arrival: '[placeholder="Arrival"]',
-        departure: '[placeholder="Departure"]',
-        datePicker: '.DateRangePickerInput__withBorder',
-        clearDatesButton: '[aria-label="Clear Dates"]',
-        guests: '[placeholder="Guests"]',
-        submit: '[type="submit"]',
-        notification: '.red.pointing.below.label',
-    },
-    messages: {
-        message: '.message',
-        success: '.success',
-        error: '.error',
-    },
-    header: '.content .header',
-}
-
 class Contact {
-    locators = locators
+    locators = {
+        form: {
+            name: '[name="name"]',
+            phone: '[name="phone"]',
+            email: '[name="email"]',
+            comment: '[placeholder="Comment"]',
+            arrival: '[placeholder="Arrival"]',
+            departure: '[placeholder="Departure"]',
+            datePicker: '.DateRangePickerInput__withBorder',
+            clearDatesButton: '[aria-label="Clear Dates"]',
+            guests: '[placeholder="Guests"]',
+            submit: '[type="submit"]',
+            notification: '.red.pointing.below.label',
+        },
+        messages: {
+            message: '.message',
+            success: '.success',
+            error: '.error',
+        },
+        header: '.content .header',
+    }
 
     clearDates() {
         $(this.locators.form.clearDatesButton).click()
@@ -31,6 +27,14 @@ class Contact {
 
     getFormElementValue(elementName) {
         return $(this.locators.form[elementName]).getValue()
+    }
+
+    waitForElementCssProperty(element, cssProperty, value) {
+        browser.waitUntil(() => {
+            return this.getFormElementCssProperty(element, cssProperty).match(value)
+        },{
+            timeoutMsg: `${element} element ${cssProperty} CSS property is not ${value}`,
+        })
     }
 
     getFormElementCssProperty(elementName, cssProperty) {

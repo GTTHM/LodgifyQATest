@@ -1,6 +1,6 @@
 Usually I'm performing something like this in Jira or similar, but I would try to store found defects here.
 
-# Contacts
+# Pricing
 
 ## Defect-1
 
@@ -20,9 +20,25 @@ Pricing for 50 rentals displays and yearly period is incorrect for ultimate plan
 Expected result: Ultimate plan pricing should be $525
 Actual result: Ultimate plan pricing is $518
 
-# Pricing
+## Defect-2
 
-## Defect-2 
+### Strange behavior after swithing between price periods
+
+#### Description:
+
+Sometimes after switch between price periods on local env browser opens new page with real lodgify url.
+
+#### Steps to reproduce
+
+1. Open pricing page
+2. Switch between price periods several times(10+)
+ 
+Expected result: Switch is working, price periods changing
+Actual result: Sometimes new window/tab with real lodgify pricing url opened 
+
+# Contacts
+
+## Defect-3
 
 ### Impossible to send request via automation on Lodgify contact page 
 
@@ -44,7 +60,7 @@ Automation:
 Expected result: Request is sent with status code 200, "Your request has been sent successfully." notification is shown
 Actual result: Request is failed, "Error" notification is shown.
 
-## Defect-3
+## Defect-4
 
 ### Notification is not shown if mandatory phone field is left empty
 
@@ -62,7 +78,7 @@ Phone field should be mandatory, but notification isn't shown if it is left empt
 Expected result: Notification should be shown after step 3, request should fail
 Actual result: Notification wasn't shown, request passed
 
-## Defect-4 
+## Defect-5
 
 ### Phone field border-color styles are displayed incorrectly
 
@@ -78,7 +94,7 @@ After filling any field with appropriate data borders of the corresponding field
 Expected result: Green border for phone field is displayed
 Actual result: Green border for phone field is not displayed
 
-## Defect-5
+## Defect-6
 
 ### Date picker not valides data correctly after clearing it
 

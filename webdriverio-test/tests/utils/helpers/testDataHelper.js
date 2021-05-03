@@ -1,4 +1,4 @@
-const loremIpsum = require('lorem-ipsum').loremIpsum;
+const loremIpsum = require('lorem-ipsum').loremIpsum
 
 module.exports.plans = ['starter', 'professional', 'ultimate']
 
@@ -9,6 +9,7 @@ module.exports.planPricingTestData = [
         starterPrice: '$64',
         professionalPrice: '$375',
         ultimatePrice: '$525',
+        currency: 'usd',
     },
     {
         period: 'monthly',
@@ -16,6 +17,7 @@ module.exports.planPricingTestData = [
         starterPrice: '$74',
         professionalPrice: '$315',
         ultimatePrice: '$440',
+        currency: 'usd',
     },
     {
         period: 'twoYears',
@@ -23,6 +25,7 @@ module.exports.planPricingTestData = [
         starterPrice: '$72',
         professionalPrice: '$492',
         ultimatePrice: '$673',
+        currency: 'usd',
     },
 ]
 
@@ -30,17 +33,17 @@ module.exports.currenciesTestData = [
     {
         currency: 'eur',
         sign: '€',
-        pre: false,
+        isPre: false,
     },
     {
         currency: 'usd',
         sign: '$',
-        pre: true,
+        isPre: true,
     },
     {
         currency: 'gbp',
         sign: '£',
-        pre: true,
+        isPre: true,
     },
 ]
 
@@ -115,7 +118,7 @@ module.exports.colors = {
     red: '208,2,27',
 }
 
-const notValidEmailNotification = 'The email provided is not valid';
+const notValidEmailNotification = 'The email provided is not valid'
 
 module.exports.incorrectEmailsTestData = [
     { 
@@ -129,5 +132,26 @@ module.exports.incorrectEmailsTestData = [
     { 
         email: 'test@logify',
         notification: notValidEmailNotification,
+    },
+]
+
+module.exports.allFormFields = [
+    {
+        field: 'name',
+    },
+    {
+        field: 'email',
+    },
+    {
+        field: 'datePicker',
+    },
+    {
+        field: 'guests',
+    },
+    {
+        field: 'comment',
+    },
+    {
+        field: 'phone',
     },
 ]

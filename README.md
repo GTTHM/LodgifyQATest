@@ -12,6 +12,8 @@ The following instructions use Bash, so make sure to install Git Bash before run
 
 Quick start commands:
 ## Installing
+You might need to update chromedriver version in package.json - default is 87.0.7.
+
 ```
 $ npm run-script install-all
 ```
