@@ -12,19 +12,36 @@ The following instructions use Bash, so make sure to install Git Bash before run
 
 Quick start commands:
 ## Installing
+You might need to update chromedriver version in package.json - default is 87.0.7.
+
 ```
 $ npm run-script install-all
 ```
 ## Starting mock up server (leave a terminal open for this command, and run the test in another terminal)
 ```
 $ npm run-script dev-server
-
+```
 Note: by default, server.js is using your port 8080, feel free to change it in case you're using it for something else, port 3000 would also be a good alternative. (node server/server.js)
+
+It is possible to specify port for this command with --PORT(or -p) environment variable, i.e.:
+```
+$ npm run-script dev-server -- -p=3000
 ```
 ## Execute Tests
 ```
 $ npx wdio wdio.conf.js 
 ```
+or
+```
+$ npm run wdio:run
+```
+
+It is possible to specify port for this command with --PORT(or -p) environment variable, i.e.:
+```
+$ npm run wdio:run -- -p=3000
+```
+
+
 
 Challengue Requirements:
 
